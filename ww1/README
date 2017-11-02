@@ -1,0 +1,3 @@
+### Note
+- bugs have been caught in the FE from the analysis of the big spender model
+- order of analysis was: sql stuff -> EDA1 -> EDA big spender -> python -> model
