@@ -250,3 +250,12 @@ glm1 <- glm(y ~ as.factor(order_year) +  as.factor(SalespersonPersonID) +
 anova(glm1, test='LRT')
 ```
 
+
+```{r}
+glm1 <- glm(y ~ as.factor(CustomerID),
+         data=train, family='binomial')
+
+anova(glm1, test='LRT')
+```
+
+
