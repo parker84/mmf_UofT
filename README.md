@@ -5,4 +5,4 @@ ML examples for the Master of Mathematical Finance program
 
 NOTE: 
 - some files may be too big to view, you'll have to download them.
-- There may still be bugs in some of the code
+- There may still be bugs in some of the code, was not tested thoroughly.
