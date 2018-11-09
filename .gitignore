@@ -1,5 +1,8 @@
 data
 slides
+mmf_env
+.ipynb_checkpoints
+*.xml
 
 # Windows image file caches
 Thumbs.db
