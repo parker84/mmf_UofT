@@ -32,5 +32,9 @@ docker run --name mmf_db  -d -p 5431:5432 postgres
 ### Jupyter Notebook (For EDA)
 - apart of anaconda already
 
-### vscode (for git)
+### git 
+- intro to git: https://guides.github.com/introduction/git-handbook/
+- feature branches: https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow
+
+#### vscode (for git)
 -  nice for handling git conflicts
