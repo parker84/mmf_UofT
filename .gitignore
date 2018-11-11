@@ -3,6 +3,7 @@ slides
 mmf_env
 .ipynb_checkpoints
 *.xml
+credit_risk/rough/
 
 # Windows image file caches
 Thumbs.db
