@@ -1,4 +1,6 @@
-create table helper_features_per_curr_app as
+
+drop table if exists helper_features_per_curr_app;
+create temporary table helper_features_per_curr_app as
   select min(prev_apps."AMT_CREDIT" - target_table."AMT_CREDIT") as min_credit_diff_prev_vs_current_app,
       --TODO: make a better similarity measure
          max(
@@ -14,7 +16,8 @@ create table helper_features_per_curr_app as
   group by target_table."SK_ID_CURR", "SK_ID_PREV";
 
 
-create table historical_features_per_curr_app as
+drop table if exists  historical_features_per_curr_app;
+create temporary table historical_features_per_curr_app as
   select target_table."SK_ID_CURR",
          sum(cc_history.SK_DPD)         as total_num_days_past_due_cc_in_total,
          sum(cc_history.past_due)       as num_times_dpd_in_total,
@@ -27,7 +30,8 @@ create table historical_features_per_curr_app as
   group by target_table."SK_ID_CURR";
 
 
-create table features_from_most_similar_prev_app as
+drop table if exists features_from_most_similar_prev_app;
+create temporary table features_from_most_similar_prev_app as
   select cred_diff.*
   from (select prev_app.*, prev_app.AMT_CREDIT - target_table."AMT_CREDIT" as prev_app_cred_curr_app_cred_diff
         from target_table as target_table
@@ -39,7 +43,8 @@ create table features_from_most_similar_prev_app as
   where cred_diff.prev_app_cred_curr_app_cred_diff is not null;
 
 
-create table features_from_most_recent_prev_app as
+drop table if exists features_from_most_recent_prev_app;
+create temporary table features_from_most_recent_prev_app as
   select prev_app.*
   from historical_features_per_prev_app as prev_app
          left join helper_features_per_curr_app as helpers
