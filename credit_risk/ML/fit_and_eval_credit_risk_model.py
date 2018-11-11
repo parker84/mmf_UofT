@@ -11,7 +11,7 @@ class FitEvalCreditModel(FitEvalSaveModel):
         # (s is step into, r is step out of, n is next line)
         self.conn = ReadWriteData()
         dfs = {"train":
-                    self.conn.query_psql_table("select * from historical_features_per_prev_app")}
+                    self.conn.query_psql_table("select * from final_feature_table")}
         feat_names = [c for c in dfs['train'].columns
                       if c != "TARGET"]
         print(f"features in model: {feat_names}")
