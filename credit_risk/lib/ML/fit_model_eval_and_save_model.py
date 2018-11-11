@@ -79,3 +79,9 @@ class FitEvalSaveModel(object):
         for name in ['test', 'hold']:
             self.output_df = self.output_df.append(self.dfs[name])
         self.output_df.to_csv(save_preds_path)
+
+    def save_model(self, save_path):
+        joblib.dump(self.model, save_path)
+
+    def load_model(self, load_path):
+        self.model = joblib.load(load_path)
