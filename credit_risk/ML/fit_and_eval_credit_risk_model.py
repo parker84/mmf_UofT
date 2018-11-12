@@ -1,6 +1,7 @@
 from lib.ML.fit_model_eval_and_save_model import FitEvalSaveModel
 from lib.operational.read_write_helpers import ReadWriteData
 from sklearn.ensemble import RandomForestClassifier
+from xgboost import XGBClassifier
 from lib.ML.eval import EvalBinaryClassifier
 from sklearn.model_selection import KFold
 
@@ -18,9 +19,15 @@ class FitEvalCreditModel(FitEvalSaveModel):
         FitEvalSaveModel.__init__(dfs, feat_names, ["TARGET"])
 
     def cv_random_forest(self):
+        # would need to impute missing values before using this
         rf = RandomForestClassifier()
         self.cross_validate_train(rf, EvalBinaryClassifier, nfolds=3, fold_func=KFold)
 
+    def cv_xgboost(self):
+        xgb = XGBClassifier()
+        self.cross_validate_train(xgb, EvalBinaryClassifier, nfolds=3, fold_func=KFold)
+
 if __name__ == "__main__":
     fitEvalCreditModel = FitEvalCreditModel()
-    fitEvalCreditModel.cv_random_forest()
+    # fitEvalCreditModel.cv_random_forest()
+    fitEvalCreditModel.cv_xgboost()
