@@ -5,6 +5,7 @@
     - a) eda/eda_app_table.ipynb
     - b) eda/eda_past_apps.ipynb
     - c) eda/ead_feature_filtering_selections.sql
+    - d) eda/eda_unsupervised_features.ipynb
 - 2. feature eng
     - a) feature_eng/make_target_table.sql
     - b) feature_eng/eng_payments_and_cc_balance_lvl_features.sql
